@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Brilliance — Marketing for Every Small Business</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --beige:      #f2ece2;
+  --beige-dark: #e4dace;
+  --beige-mid:  #ede6d9;
+  --green:      #2d4a35;
+  --green-mid:  #3a5c43;
+  --green-light:#4a7358;
+  --green-muted:#8aab92;
+  --white:      #faf8f4;
+  --ink:        #1a2118;
+  --ink-mid:    #3b4a3e;
+  --muted:      #7a8c7d;
+  --border:     rgba(45,74,53,0.12);
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+body {
+  background: var(--beige);
+  color: var(--ink);
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--beige); }
+::-webkit-scrollbar-thumb { background: var(--green-muted); border-radius: 3px; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top:0; left:0; right:0; z-index:100;
+  display: flex; align-items:center; justify-content:space-between;
+  padding: 1.5rem 6vw;
+  background: rgba(242,236,226,0.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem; font-weight: 500;
+  color: var(--green); letter-spacing: .01em;
+}
+.logo span { color: var(--ink); }
+nav ul { list-style:none; display:flex; gap:2.8rem; }
+nav ul a {
+  text-decoration:none; color: var(--muted);
+  font-size: .8rem; font-weight: 400;
+  letter-spacing: .1em; text-transform: uppercase;
+  transition: color .2s;
+}
+nav ul a:hover { color: var(--green); }
+.nav-cta {
+  background: var(--green); color: var(--beige) !important;
+  padding: .55rem 1.4rem; border-radius: 2px;
+  font-size: .75rem !important; letter-spacing: .1em !important;
+  font-weight: 500 !important; transition: background .2s !important;
+}
+.nav-cta:hover { background: var(--green-mid) !important; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: grid; grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 8rem 6vw 5rem;
+  gap: 4rem;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; top:0; right:0;
+  width: 50%; height: 100%;
+  background: var(--green);
+  z-index: 0;
+}
+.hero-left { position: relative; z-index: 1; }
+.hero-eyebrow {
+  display: inline-flex; align-items:center; gap:.7rem;
+  font-size: .72rem; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--green); margin-bottom: 2rem;
+  animation: fadeUp .5s ease both;
+}
+.hero-eyebrow::before { content:''; width:24px; height:1px; background:var(--green); }
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.8rem, 5vw, 4.6rem);
+  font-weight: 400; line-height: 1.12;
+  color: var(--ink); margin-bottom: 1.8rem;
+  animation: fadeUp .6s .1s ease both;
+}
+h1 em { font-style:italic; color: var(--green); }
+.hero-sub {
+  font-size: .98rem; line-height: 1.85; color: var(--ink-mid);
+  max-width: 440px; margin-bottom: 2.8rem;
+  animation: fadeUp .6s .2s ease both;
+}
+.hero-btns {
+  display: flex; gap: 1rem; flex-wrap: wrap;
+  animation: fadeUp .6s .3s ease both;
+}
+.btn-solid {
+  background: var(--green); color: var(--beige);
+  padding: .85rem 2rem; border-radius: 2px;
+  font-family: 'Jost', sans-serif; font-size: .82rem;
+  font-weight: 500; letter-spacing: .08em; text-transform: uppercase;
+  text-decoration: none; transition: background .2s, transform .2s;
+  display: inline-block;
+}
+.btn-solid:hover { background: var(--green-mid); transform: translateY(-2px); }
+.btn-line {
+  border: 1px solid var(--green); color: var(--green);
+  padding: .85rem 2rem; border-radius: 2px;
+  font-family: 'Jost', sans-serif; font-size: .82rem;
+  font-weight: 400; letter-spacing: .08em; text-transform: uppercase;
+  text-decoration: none; transition: all .2s;
+  display: inline-block;
+}
+.btn-line:hover { background: var(--green); color: var(--beige); }
+
+.hero-right {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column; gap: 1.2rem;
+  animation: fadeUp .7s .2s ease both;
+}
+.hero-stat {
+  background: rgba(242,236,226,.08);
+  border: 1px solid rgba(242,236,226,.15);
+  border-radius: 4px; padding: 1.6rem 2rem;
+  backdrop-filter: blur(8px);
+}
+.hero-stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.6rem; font-weight: 500; color: var(--beige);
+  line-height: 1;
+}
+.hero-stat-label { font-size: .78rem; color: rgba(242,236,226,.6); margin-top:.3rem; letter-spacing:.06em; }
+.hero-tag {
+  display: inline-flex; align-items:center; gap: .6rem;
+  background: rgba(242,236,226,.06); border: 1px solid rgba(242,236,226,.12);
+  border-radius: 2px; padding: .6rem 1rem;
+  font-size: .75rem; color: rgba(242,236,226,.5); letter-spacing:.08em;
+}
+
+/* ── STRIP ── */
+.strip {
+  background: var(--green);
+  padding: 1.2rem 6vw;
+  display: flex; align-items:center; justify-content:space-between;
+  flex-wrap: wrap; gap: 1rem;
+}
+.strip-item {
+  display: flex; align-items:center; gap:.6rem;
+  font-size: .75rem; letter-spacing: .1em; text-transform: uppercase;
+  color: rgba(242,236,226,.6);
+}
+.strip-item span { color: var(--beige); font-weight:500; }
+.strip-dot { width: 4px; height: 4px; border-radius:50%; background: var(--green-muted); }
+
+/* ── SECTION SHARED ── */
+section { padding: 6.5rem 6vw; }
+.label {
+  font-size: .7rem; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--green); margin-bottom: .9rem;
+  display: flex; align-items:center; gap:.6rem;
+}
+.label::before { content:''; width:18px; height:1px; background:var(--green); }
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 400; line-height: 1.15; color: var(--ink);
+}
+h2 em { font-style:italic; color: var(--green); }
+.sub {
+  color: var(--muted); font-size: .95rem; line-height: 1.85;
+  max-width: 520px; margin-top: .9rem;
+}
+
+/* ── ABOUT ── */
+.about { background: var(--white); }
+.about-grid { display:grid; grid-template-columns: 1fr 1fr; gap:5rem; align-items:center; }
+.about-visual {
+  background: var(--beige); border-radius: 4px;
+  padding: 3rem; position: relative; overflow:hidden;
+  border: 1px solid var(--border);
+}
+.about-visual::after {
+  content:''; position:absolute; bottom:-2rem; right:-2rem;
+  width:120px; height:120px; border-radius:50%;
+  background: var(--green); opacity:.06;
+}
+.about-quote {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem; font-style:italic; font-weight:400;
+  color: var(--green); line-height: 1.5; margin-bottom: 1.5rem;
+}
+.about-values { display:flex; flex-direction:column; gap:1rem; margin-top:1.5rem; }
+.about-val {
+  display:flex; align-items:center; gap:1rem;
+  padding:.8rem 1rem; background:var(--white);
+  border-radius:2px; border-left: 3px solid var(--green);
+}
+.about-val span { font-size:.85rem; color:var(--ink-mid); }
+
+/* ── SERVICES ── */
+.services { background: var(--beige); }
+.services-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 1px; background: var(--border);
+  border: 1px solid var(--border); border-radius:4px;
+  overflow:hidden; margin-top:3.5rem;
+}
+.svc-card {
+  background: var(--white); padding: 2.6rem 2rem;
+  transition: background .25s;
+  position:relative;
+}
+.svc-card:hover { background: var(--beige-mid); }
+.svc-card::after {
+  content:''; position:absolute; top:0; left:0; right:0;
+  height:3px; background:var(--green);
+  transform:scaleX(0); transform-origin:left;
+  transition:transform .35s ease;
+}
+.svc-card:hover::after { transform:scaleX(1); }
+.svc-icon { font-size:1.6rem; margin-bottom:1.4rem; display:block; }
+.svc-card h3 {
+  font-family:'Playfair Display',serif;
+  font-size:1.2rem; font-weight:500; color:var(--ink); margin-bottom:.7rem;
+}
+.svc-card p { font-size:.86rem; color:var(--muted); line-height:1.8; }
+.svc-list { list-style:none; margin-top:1.2rem; display:flex; flex-direction:column; gap:.4rem; }
+.svc-list li {
+  font-size:.8rem; color:var(--ink-mid); padding-left:1rem; position:relative;
+}
+.svc-list li::before { content:'–'; position:absolute; left:0; color:var(--green-muted); }
+
+/* ── PROCESS / 90 DAYS ── */
+.process { background: var(--green); }
+.process .label { color: var(--green-muted); }
+.process .label::before { background: var(--green-muted); }
+.process h2 { color: var(--beige); }
+.process .sub { color: rgba(242,236,226,.55); max-width:560px; }
+.process-layout { margin-top: 4rem; }
+
+.phase-tabs {
+  display:flex; gap:1px; background:rgba(242,236,226,.08);
+  border-radius:4px 4px 0 0; overflow:hidden; border:1px solid rgba(242,236,226,.1);
+  border-bottom:none;
+}
+.phase-tab {
+  flex:1; padding:1.2rem 1.5rem; cursor:pointer;
+  background:rgba(242,236,226,.04); border:none;
+  font-family:'Jost',sans-serif; font-size:.75rem;
+  font-weight:500; letter-spacing:.1em; text-transform:uppercase;
+  color:rgba(242,236,226,.45); transition:all .2s;
+  text-align:center;
+}
+.phase-tab.active {
+  background:rgba(242,236,226,.1); color:var(--beige);
+  border-bottom: 2px solid var(--beige-dark);
+}
+.phase-tab:hover:not(.active) { background:rgba(242,236,226,.06); color:rgba(242,236,226,.7); }
+
+.phase-content {
+  border:1px solid rgba(242,236,226,.1);
+  border-radius: 0 0 4px 4px;
+  background: rgba(242,236,226,.04);
+  padding: 3rem;
+  display: none;
+}
+.phase-content.active { display:block; }
+.phase-header { margin-bottom:2.5rem; }
+.phase-period {
+  font-size:.7rem; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--green-muted); margin-bottom:.5rem;
+}
+.phase-title {
+  font-family:'Playfair Display',serif;
+  font-size:1.8rem; font-weight:400; color:var(--beige);
+}
+.phase-desc { font-size:.9rem; color:rgba(242,236,226,.6); margin-top:.6rem; line-height:1.75; max-width:560px; }
+
+.steps-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+.step-card {
+  background: rgba(242,236,226,.06);
+  border:1px solid rgba(242,236,226,.1); border-radius:4px; padding:1.8rem;
+  transition:background .2s;
+}
+.step-card:hover { background:rgba(242,236,226,.1); }
+.step-week {
+  font-size:.65rem; letter-spacing:.15em; text-transform:uppercase;
+  color:var(--green-muted); margin-bottom:.5rem;
+}
+.step-card h4 {
+  font-family:'Playfair Display',serif; font-size:1rem;
+  font-weight:500; color:var(--beige); margin-bottom:.6rem;
+}
+.step-card p { font-size:.82rem; color:rgba(242,236,226,.55); line-height:1.75; }
+.step-deliverable {
+  margin-top:1rem; padding:.5rem .8rem;
+  background:rgba(242,236,226,.06); border-radius:2px;
+  font-size:.72rem; color:var(--green-muted); letter-spacing:.05em;
+}
+.step-deliverable span { color:rgba(242,236,226,.8); }
+
+/* ── RESULTS ── */
+.results { background: var(--white); }
+.results-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:start; margin-top:3.5rem; }
+.results-metrics { display:flex; flex-direction:column; gap:1rem; }
+.metric-item {
+  padding:1.4rem 1.8rem; background:var(--beige);
+  border-radius:4px; border:1px solid var(--border);
+}
+.metric-top { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:.8rem; }
+.metric-name { font-size:.8rem; color:var(--muted); letter-spacing:.05em; }
+.metric-pct { font-family:'Playfair Display',serif; font-size:1.5rem; color:var(--green); }
+.metric-bar-bg { height:5px; background:var(--beige-dark); border-radius:3px; }
+.metric-bar-fill { height:100%; background:var(--green); border-radius:3px; transition:width 1s ease; }
+.results-text { }
+.results-text p { font-size:.9rem; color:var(--muted); line-height:1.85; margin-bottom:1.5rem; }
+.result-point {
+  display:flex; gap:1.2rem; margin-bottom:1.4rem; align-items:flex-start;
+}
+.rp-num {
+  font-family:'Playfair Display',serif; font-size:2rem; color:rgba(45,74,53,.2);
+  line-height:1; flex-shrink:0; width:2.5rem;
+}
+.rp-body h4 { font-size:.9rem; font-weight:500; color:var(--ink); margin-bottom:.25rem; }
+.rp-body p { font-size:.83rem; color:var(--muted); line-height:1.7; }
+
+/* ── TESTIMONIALS ── */
+.testimonials { background: var(--beige-mid); }
+.t-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:3rem; }
+.t-card {
+  background:var(--white); border-radius:4px; padding:2.2rem;
+  border:1px solid var(--border); transition:transform .2s;
+}
+.t-card:hover { transform:translateY(-3px); }
+.t-stars { color:var(--green); font-size:.8rem; letter-spacing:.12em; margin-bottom:1.1rem; }
+.t-card blockquote {
+  font-family:'Playfair Display',serif; font-style:italic;
+  font-size:1rem; color:var(--ink); line-height:1.7; margin-bottom:1.4rem;
+}
+.t-author strong { font-family:'Jost',sans-serif; font-size:.82rem; font-weight:500; color:var(--ink); display:block; }
+.t-author span { font-size:.78rem; color:var(--muted); }
+
+/* ── HOW WE WORK ── */
+.howwe { background:var(--white); }
+.howwe-grid { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
+.howwe-steps { margin-top:2rem; display:flex; flex-direction:column; gap:0; }
+.hw-step {
+  display:flex; gap:1.5rem;
+  padding: 1.8rem 0;
+  border-bottom:1px solid var(--border);
+  transition: padding-left .2s;
+}
+.hw-step:hover { padding-left:.5rem; }
+.hw-step:last-child { border-bottom:none; }
+.hw-icon {
+  width:42px; height:42px; flex-shrink:0; border-radius:50%;
+  background:rgba(45,74,53,.08); display:flex; align-items:center;
+  justify-content:center; font-size:1rem;
+}
+.hw-step h4 { font-size:.92rem; font-weight:500; color:var(--ink); margin-bottom:.3rem; }
+.hw-step p { font-size:.84rem; color:var(--muted); line-height:1.75; }
+.howwe-right {
+  background:var(--green); border-radius:4px; padding:3rem;
+  display:flex; flex-direction:column; gap:1.5rem;
+}
+.howwe-right h3 {
+  font-family:'Playfair Display',serif; font-size:1.5rem;
+  font-weight:400; color:var(--beige); margin-bottom:.5rem;
+}
+.howwe-right p { font-size:.87rem; color:rgba(242,236,226,.6); line-height:1.8; }
+.commitment-list { list-style:none; display:flex; flex-direction:column; gap:.8rem; }
+.commitment-list li {
+  display:flex; gap:.8rem; align-items:flex-start;
+  font-size:.84rem; color:rgba(242,236,226,.75); line-height:1.6;
+}
+.commitment-list li::before { content:'✓'; color:var(--green-muted); flex-shrink:0; margin-top:.1rem; }
+
+/* ── CTA ── */
+.cta {
+  background: var(--ink); padding: 7rem 6vw; text-align:center; position:relative; overflow:hidden;
+}
+.cta::before {
+  content:''; position:absolute; top:-40%; left:-10%;
+  width:500px; height:500px; border-radius:50%;
+  background:radial-gradient(circle, rgba(45,74,53,.5), transparent 70%);
+  pointer-events:none;
+}
+.cta .label { color:var(--green-muted); justify-content:center; }
+.cta .label::before { background:var(--green-muted); }
+.cta h2 { color:var(--beige); margin:0 auto 1rem; max-width:600px; text-align:center; }
+.cta p { color:rgba(242,236,226,.5); max-width:460px; margin:0 auto 2.5rem; line-height:1.85; font-size:.93rem; }
+.cta-btns { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+.btn-beige {
+  background:var(--beige); color:var(--green);
+  padding:.9rem 2.4rem; border-radius:2px;
+  font-family:'Jost',sans-serif; font-size:.82rem;
+  font-weight:500; letter-spacing:.08em; text-transform:uppercase;
+  text-decoration:none; transition:all .2s; display:inline-block;
+}
+.btn-beige:hover { background:var(--beige-dark); transform:translateY(-2px); }
+.btn-outline-light {
+  border:1px solid rgba(242,236,226,.2); color:rgba(242,236,226,.7);
+  padding:.9rem 2.4rem; border-radius:2px;
+  font-family:'Jost',sans-serif; font-size:.82rem;
+  font-weight:400; letter-spacing:.08em; text-transform:uppercase;
+  text-decoration:none; transition:all .2s; display:inline-block;
+}
+.btn-outline-light:hover { border-color:var(--beige); color:var(--beige); }
+
+/* ── FOOTER ── */
+footer {
+  background:var(--ink); border-top:1px solid rgba(242,236,226,.07);
+  padding:3rem 6vw;
+}
+.footer-inner {
+  display:flex; justify-content:space-between; align-items:center;
+  flex-wrap:wrap; gap:1.5rem;
+}
+.footer-logo {
+  font-family:'Playfair Display',serif; font-size:1.2rem;
+  color:var(--beige); font-weight:500;
+}
+.footer-logo span { color:var(--green-muted); }
+.footer-links { display:flex; gap:2.2rem; }
+.footer-links a { font-size:.78rem; color:rgba(242,236,226,.35); text-decoration:none; letter-spacing:.06em; transition:color .2s; }
+.footer-links a:hover { color:var(--beige); }
+footer small { font-size:.72rem; color:rgba(242,236,226,.2); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(22px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+@media(max-width:900px){
+  nav ul { display:none; }
+  .hero { grid-template-columns:1fr; }
+  .hero::before { display:none; }
+  .hero-right { display:none; }
+  .about-grid, .howwe-grid { grid-template-columns:1fr; }
+  .services-grid { grid-template-columns:1fr 1fr; }
+  .steps-grid { grid-template-columns:1fr; }
+  .results-grid { grid-template-columns:1fr; }
+  .t-grid { grid-template-columns:1fr; }
+  .strip { justify-content:center; gap:1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Digital <span>Brilliance</span></div>
+  <ul>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">Our Process</a></li>
+    <li><a href="#results">Results</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#contact" class="nav-cta">Free Consultation</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Digital Marketing Agency</div>
+    <h1>Grow Your<br>Business With<br><em>Purposeful</em><br>Marketing.</h1>
+    <p class="hero-sub">Digital Brilliance partners with small businesses of every kind to build lasting online presence, attract the right customers, and turn digital channels into real revenue.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-solid">Start a Conversation</a>
+      <a href="#process" class="btn-line">See How We Work</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-stat">
+      <div class="hero-stat-num">3× Growth</div>
+      <div class="hero-stat-label">Average lead increase within 90 days</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">All Industries</div>
+      <div class="hero-stat-label">We work with any small business, any niche</div>
+    </div>
+    <div class="hero-tag">📍 Google Maps &nbsp;·&nbsp; 📱 Social &nbsp;·&nbsp; 🎯 Paid Ads &nbsp;·&nbsp; 🌐 Websites</div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-item"><span>Social Media Management</span></div>
+  <div class="strip-dot"></div>
+  <div class="strip-item"><span>Google Maps & Local SEO</span></div>
+  <div class="strip-dot"></div>
+  <div class="strip-item"><span>Paid Advertising</span></div>
+  <div class="strip-dot"></div>
+  <div class="strip-item"><span>Website Design</span></div>
+  <div class="strip-dot"></div>
+  <div class="strip-item"><span>Email & SMS Marketing</span></div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-visual">
+      <p class="about-quote">"Every small business deserves to be found, trusted, and chosen — online."</p>
+      <p style="font-size:.84rem;color:var(--muted);line-height:1.8;">Whether you run a local restaurant, a professional service, a retail shop, or anything in between — your customers are searching for you online right now. We make sure they find you.</p>
+      <div class="about-values">
+        <div class="about-val"><span>🎯 &nbsp; Strategy before execution — always</span></div>
+        <div class="about-val"><span>📊 &nbsp; Transparent reporting, no fluff</span></div>
+        <div class="about-val"><span>🤝 &nbsp; Long-term partnerships, not transactions</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="label">Who We Are</div>
+      <h2>A Marketing Partner<br>for <em>Every</em> Small Business</h2>
+      <p class="sub">Digital Brilliance was built on a simple belief: small businesses are the backbone of every community, and they deserve the same quality of marketing that big brands get.</p>
+      <br>
+      <p class="sub">We don't limit who we work with. From food to fitness, healthcare to home services, retail to real estate — if you're a small business that wants to grow online, we're your team.</p>
+      <br>
+      <a href="#contact" class="btn-solid">Work With Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="label">What We Do</div>
+  <h2>Everything Your Business<br>Needs to <em>Thrive Online</em></h2>
+  <p class="sub">A complete digital marketing suite — use one service or all of them. We build a plan around what your business actually needs.</p>
+  <div class="services-grid">
+    <div class="svc-card">
+      <span class="svc-icon">📱</span>
+      <h3>Social Media Management</h3>
+      <p>We create, design, and manage your social presence across Instagram, Facebook, and TikTok with content that builds trust and drives engagement.</p>
+      <ul class="svc-list">
+        <li>Custom content creation</li>
+        <li>Reels & short-form video</li>
+        <li>Community management</li>
+        <li>Growth strategy & analytics</li>
+      </ul>
+    </div>
+    <div class="svc-card">
+      <span class="svc-icon">🎯</span>
+      <h3>Paid Advertising</h3>
+      <p>Targeted Google and Meta ad campaigns that reach the right people at the right moment — driving calls, website visits, and walk-ins.</p>
+      <ul class="svc-list">
+        <li>Google Search & Display ads</li>
+        <li>Facebook & Instagram campaigns</li>
+        <li>Retargeting sequences</li>
+        <li>Weekly optimization & reporting</li>
+      </ul>
+    </div>
+    <div class="svc-card">
+      <span class="svc-icon">🌐</span>
+      <h3>Website Design</h3>
+      <p>Beautiful, fast, conversion-focused websites that represent your brand professionally and turn visitors into real customers.</p>
+      <ul class="svc-list">
+        <li>Custom design & development</li>
+        <li>Mobile-first & SEO-ready</li>
+        <li>Booking & contact integrations</li>
+        <li>Ongoing maintenance available</li>
+      </ul>
+    </div>
+    <div class="svc-card">
+      <span class="svc-icon">📍</span>
+      <h3>Google Maps & Local SEO</h3>
+      <p>Rank at the top of local search results when customers look for your type of business nearby. Be the obvious first choice in your area.</p>
+      <ul class="svc-list">
+        <li>Google Business Profile optimization</li>
+        <li>Review generation system</li>
+        <li>Local citation building</li>
+        <li>Competitor ranking analysis</li>
+      </ul>
+    </div>
+    <div class="svc-card">
+      <span class="svc-icon">✉️</span>
+      <h3>Email & SMS Marketing</h3>
+      <p>Stay connected with your customers through automated email and text campaigns that nurture leads, drive repeat business, and re-engage past clients.</p>
+      <ul class="svc-list">
+        <li>Automated lead nurture flows</li>
+        <li>Promotional SMS campaigns</li>
+        <li>Appointment & follow-up reminders</li>
+        <li>Monthly newsletters</li>
+      </ul>
+    </div>
+    <div class="svc-card">
+      <span class="svc-icon">⭐</span>
+      <h3>Reputation Management</h3>
+      <p>Your online reviews are your most powerful sales tool. We help you collect, monitor, and respond to reviews that build lasting trust.</p>
+      <ul class="svc-list">
+        <li>Review request automation</li>
+        <li>Google & Yelp monitoring</li>
+        <li>Response management</li>
+        <li>Reputation score dashboard</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 90-DAY PROCESS -->
+<section class="process" id="process">
+  <div class="label">Our Process</div>
+  <h2>How We Deliver<br><em>Consistent Results</em></h2>
+  <p class="sub">We follow a structured, proven 90-day framework to onboard your business, build momentum, and create compounding growth over time.</p>
+
+  <div class="process-layout">
+    <div class="phase-tabs">
+      <button class="phase-tab active" onclick="showPhase('p1',this)">Phase 1 — Days 1–30</button>
+      <button class="phase-tab" onclick="showPhase('p2',this)">Phase 2 — Days 31–60</button>
+      <button class="phase-tab" onclick="showPhase('p3',this)">Phase 3 — Days 61–90</button>
+      <button class="phase-tab" onclick="showPhase('p4',this)">Beyond 90 Days</button>
+    </div>
+
+    <div id="p1" class="phase-content active">
+      <div class="phase-header">
+        <div class="phase-period">Days 1 – 30</div>
+        <div class="phase-title">Foundation & Discovery</div>
+        <p class="phase-desc">We spend the first month learning your business deeply, auditing everything, and building the right infrastructure before we spend a single dollar or publish a single post.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-week">Week 1</div>
+          <h4>Deep Business Audit</h4>
+          <p>We review your current website, social profiles, Google presence, reviews, and competitors. No guessing — we start with facts.</p>
+          <div class="step-deliverable">Deliverable: <span>Full Audit Report</span></div>
+        </div>
+        <div class="step-card">
+          <div class="step-week">Week 2</div>
+          <h4>Strategy Development</h4>
+          <p>We build a custom 90-day marketing plan tailored to your specific business, industry, location, and growth goals.</p>
+          <div class="step-deliverable">Deliverable: <span>90-Day Marketing Roadmap</span></div>
+        </div>
+        <div class="step-card">
+          <div class="step-week">Weeks 3–4</div>
+          <h4>Setup & Infrastructure</h4>
+          <p>Accounts configured, tracking installed, Google profile optimized, ad accounts created, and content templates designed.</p>
+          <div class="step-deliverable">Deliverable: <span>All Channels Live & Tracking</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="p2" class="phase-content">
+      <div class="phase-header">
+        <div class="phase-period">Days 31 – 60</div>
+        <div class="phase-title">Launch & Build Momentum</div>
+        <p class="phase-desc">Everything goes live. Ads run, content is published, and we monitor daily to learn what's working and quickly cut what isn't.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-week">Week 5–6</div>
+          <h4>Content & Ads Launch</h4>
+          <p>Social content calendar kicks off, paid ad campaigns go live, and email/SMS sequences are activated and tested.</p>
+          <div class="step-deliverable">Deliverable: <span>First Campaigns Active</span></div>
+        </div>
+        <div class="step-card">
+          <div class="step-week">Week 6–7</div>
+          <h4>Data Collection & Testing</h4>
+          <p>We A/B test ad creatives, post formats, and messaging to learn what resonates most with your specific audience.</p>
+          <div class="step-deliverable">Deliverable: <span>Performance Insights Report</span></div>
+        </div>
+        <div class="step-card">
+          <div class="step-week">Week 7–8</div>
+          <h4>First Results Check-In</h4>
+          <p>We meet to review early results, adjust strategy based on data, and confirm priorities for the final phase of the 90 days.</p>
+          <div class="step-deliverable">Deliverable: <span>30-Day Performance Review</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="p3" class="phase-content">
+      <div class="phase-header">
+        <div class="phase-period">Days 61 – 90</div>
+        <div class="phase-title">Optimize & Scale</div>
+        <p class="phase-desc">With data in hand, we double down on what's working, cut what isn't, and begin scaling the channels delivering the strongest return.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-week">Week 9–10</div>
+          <h4>Campaign Optimization</h4>
+          <p>Ad budgets shifted to top performers, content strategy refined based on engagement data, SEO adjustments made based on ranking reports.</p>
+          <div class="step-deliverable">Deliverable: <span>Optimized Campaign Set</span></div>
+        </div>
+        <div class="step-card">
+          <div class="step-week">Week 11</div>
+          <h4>Scale What's Working</h4>
+          <p>Increase investment in the highest-ROI channels and expand audience targeting to reach more potential customers in your area.</p>
+          <div class="step-deliverable">Deliverable: <span>Expanded Campaign Reach</span></div>
+        </div>
+        <div class="step-card">
+          <div class="step-week">Week 12</div>
+          <h4>Full 90-Day Report</h4>
+          <p>A complete report covering every metric — leads generated, cost per lead, reach, engagement, ranking improvements, and ROI summary.</p>
+          <div class="step-deliverable">Deliverable: <span>Complete 90-Day Growth Report</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="p4" class="phase-content">
+      <div class="phase-header">
+        <div class="phase-period">Month 4 and Beyond</div>
+        <div class="phase-title">Compounding Long-Term Growth</div>
+        <p class="phase-desc">The first 90 days build the foundation. Everything after compounds on top of it — your presence grows stronger, your cost-per-lead decreases, and results multiply month over month.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-week">Ongoing</div>
+          <h4>Monthly Strategy Reviews</h4>
+          <p>Regular check-in calls to review results, discuss upcoming promotions, and adjust strategy based on business changes or seasonal shifts.</p>
+          <div class="step-deliverable">Deliverable: <span>Monthly Report & Strategy Call</span></div>
+        </div>
+        <div class="step-card">
+          <div class="step-week">Ongoing</div>
+          <h4>Continuous Improvement</h4>
+          <p>New content formats tested, ad creative refreshed, SEO opportunities pursued, and new channels added as your business grows and budget allows.</p>
+          <div class="step-deliverable">Deliverable: <span>Quarterly Growth Plan</span></div>
+        </div>
+        <div class="step-card">
+          <div class="step-week">Ongoing</div>
+          <h4>Priority Support</h4>
+          <p>Your dedicated account manager is always reachable. We communicate proactively — you'll never wonder what's happening with your marketing.</p>
+          <div class="step-deliverable">Deliverable: <span>Dedicated Account Manager</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="results" id="results">
+  <div class="label">What to Expect</div>
+  <h2>Real Results for<br><em>Real Businesses</em></h2>
+  <div class="results-grid">
+    <div class="results-metrics">
+      <div class="metric-item">
+        <div class="metric-top"><span class="metric-name">New Leads Per Month</span><span class="metric-pct">+82%</span></div>
+        <div class="metric-bar-bg"><div class="metric-bar-fill" style="width:82%"></div></div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-top"><span class="metric-name">Google Map Visibility</span><span class="metric-pct">+94%</span></div>
+        <div class="metric-bar-bg"><div class="metric-bar-fill" style="width:94%"></div></div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-top"><span class="metric-name">Social Media Reach</span><span class="metric-pct">+67%</span></div>
+        <div class="metric-bar-bg"><div class="metric-bar-fill" style="width:67%"></div></div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-top"><span class="metric-name">Website Conversions</span><span class="metric-pct">+58%</span></div>
+        <div class="metric-bar-bg"><div class="metric-bar-fill" style="width:58%"></div></div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-top"><span class="metric-name">Online Review Count</span><span class="metric-pct">+75%</span></div>
+        <div class="metric-bar-bg"><div class="metric-bar-fill" style="width:75%"></div></div>
+      </div>
+      <p style="font-size:.72rem;color:var(--muted);margin-top:.5rem">*Average results across clients after 90 days</p>
+    </div>
+    <div class="results-text">
+      <p>We don't measure success in likes or impressions. Everything we do ties back to what actually matters for your business — more customers, more calls, more revenue.</p>
+      <div class="result-point">
+        <div class="rp-num">01</div>
+        <div class="rp-body">
+          <h4>You'll Know Where Every Dollar Goes</h4>
+          <p>Live reporting dashboards show your performance in real time — no waiting for a monthly email to know what's happening.</p>
+        </div>
+      </div>
+      <div class="result-point">
+        <div class="rp-num">02</div>
+        <div class="rp-body">
+          <h4>Results That Compound Over Time</h4>
+          <p>SEO, reviews, and social following build on themselves. The longer we work together, the stronger your position becomes.</p>
+        </div>
+      </div>
+      <div class="result-point">
+        <div class="rp-num">03</div>
+        <div class="rp-body">
+          <h4>Flexible — As Your Business Evolves</h4>
+          <p>Your marketing plan adapts as your business grows, adds services, or enters new markets. We grow with you.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW WE WORK -->
+<section class="howwe">
+  <div class="howwe-grid">
+    <div>
+      <div class="label">Our Commitment</div>
+      <h2>Marketing That<br>Works <em>With You</em></h2>
+      <p class="sub">We're not a set-it-and-forget-it agency. We work alongside you — communicating clearly, reporting honestly, and always keeping your goals front and center.</p>
+      <div class="howwe-steps">
+        <div class="hw-step">
+          <div class="hw-icon">💬</div>
+          <div>
+            <h4>We Listen First</h4>
+            <p>Every engagement starts with understanding your business, your customers, and what success actually looks like for you — not a generic template.</p>
+          </div>
+        </div>
+        <div class="hw-step">
+          <div class="hw-icon">🗺️</div>
+          <div>
+            <h4>We Build a Real Strategy</h4>
+            <p>No guesswork. Your marketing plan is based on your market, your competitors, and your specific growth opportunities.</p>
+          </div>
+        </div>
+        <div class="hw-step">
+          <div class="hw-icon">⚙️</div>
+          <div>
+            <h4>We Execute With Precision</h4>
+            <p>Our team handles everything — you focus on running your business while we handle your online presence end-to-end.</p>
+          </div>
+        </div>
+        <div class="hw-step">
+          <div class="hw-icon">📈</div>
+          <div>
+            <h4>We Report With Transparency</h4>
+            <p>Monthly reports, live dashboards, and regular calls keep you fully informed. We never hide behind vanity metrics.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="howwe-right">
+      <div>
+        <h3>Our Promise to Every Client</h3>
+        <p>Regardless of your industry or size, you can expect the same level of care, strategy, and accountability from our team.</p>
+      </div>
+      <ul class="commitment-list">
+        <li>A dedicated account manager who knows your business</li>
+        <li>No long-term contracts — we earn your business every month</li>
+        <li>Clear onboarding so you always know what's happening</li>
+        <li>Proactive communication — we reach out before you have to ask</li>
+        <li>Strategy that evolves as your business grows</li>
+        <li>Honest recommendations, even when it means doing less</li>
+        <li>Full ownership of all accounts, content, and assets we create</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <div class="label">Let's Get Started</div>
+  <h2>Ready to Grow<br><em>Your Business Online?</em></h2>
+  <p>Book a free consultation. We'll review your current digital presence, identify your biggest opportunities, and give you a clear picture of how we can help — no commitment required.</p>
+  <div class="cta-btns">
+    <a href="mailto:nyc.digitalbrilliance@gmail.com" class="btn-beige">Book a Free Consultation</a>
+    <a href="tel:+13473377256" class="btn-outline-light">Call Us Directly</a>
+  </div>
+  <div style="margin-top:2rem; display:flex; gap:2.5rem; justify-content:center; flex-wrap:wrap;">
+    <span style="font-size:.88rem; color:rgba(242,236,226,.55); letter-spacing:.04em;">✉ nyc.digitalbrilliance@gmail.com</span>
+    <span style="font-size:.88rem; color:rgba(242,236,226,.55); letter-spacing:.04em;">📞 (347) 337-7256</span>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Digital <span>Brilliance</span></div>
+    <div class="footer-links">
+      <a href="#services">Services</a>
+      <a href="#process">Our Process</a>
+      <a href="#results">Results</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:.3rem; text-align:right;">
+      <a href="mailto:nyc.digitalbrilliance@gmail.com" style="font-size:.78rem; color:rgba(242,236,226,.45); text-decoration:none;">nyc.digitalbrilliance@gmail.com</a>
+      <a href="tel:+13473377256" style="font-size:.78rem; color:rgba(242,236,226,.45); text-decoration:none;">(347) 337-7256</a>
+    </div>
+  </div>
+  <div style="margin-top:1.5rem; padding-top:1.2rem; border-top:1px solid rgba(242,236,226,.07); text-align:center;">
+    <small>© 2026 Digital Brilliance. All rights reserved.</small>
+  </div>
+</footer>
+
+<script>
+function showPhase(id, btn) {
+  document.querySelectorAll('.phase-content').forEach(c => c.classList.remove('active'));
+  document.querySelectorAll('.phase-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
